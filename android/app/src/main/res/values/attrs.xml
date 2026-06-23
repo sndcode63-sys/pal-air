@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Dummy definition for lStar to satisfy AAPT -->
+    <attr name="lStar" format="float" tools:ignore="MissingDefaultValue" />
+</resources>
