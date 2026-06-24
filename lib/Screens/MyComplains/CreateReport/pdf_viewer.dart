@@ -8,9 +8,9 @@ import 'dart:io';
 class PFDViewerPage extends StatefulWidget {
   final File? file;
   const PFDViewerPage({
-    Key? key,
+    super.key,
     this.file,
-  }) : super(key: key);
+  });
 
   @override
   PFDViewerPageState createState() => PFDViewerPageState();

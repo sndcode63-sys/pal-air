@@ -1,4 +1,3 @@
-// import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:airo_tech/Utils/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,19 +9,10 @@ import 'Utils/route_names.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // FlutterError.onError = (errorDetails) {
-  //   FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-  // };
-  // // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-  // PlatformDispatcher.instance.onError = (error, stack) {
-  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-  //   return true;
-  // };
-
-  SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
-  ]).then((value) => runApp(const MyApp()));
+  ]);
   runApp(const MyApp());
 }
 
@@ -40,23 +30,29 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         builder: (context, child) {
           return MediaQuery(
-              data: MediaQuery.of(context)
-                  .copyWith(textScaler: const TextScaler.linear(1)),
-              child: child!);
+            data: MediaQuery.of(context)
+                .copyWith(textScaler: const TextScaler.linear(1)),
+            child: child!,
+          );
         },
-
-
-
-
-
-        title: 'Airo-Tech',
+        title: 'PAL-Air',
         navigatorKey: NavigationService.navigatorKey,
         theme: ThemeData(
           cardTheme: const CardThemeData(color: whiteColor),
-          appBarTheme: const AppBarTheme(backgroundColor: whiteColor),
-          scaffoldBackgroundColor: whiteColor,
-
-          primarySwatch: Colors.blue,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: primaryColor,
+            foregroundColor: whiteColor,
+            systemOverlayStyle: SystemUiOverlayStyle(
+              statusBarColor: primaryColor,
+              statusBarIconBrightness: Brightness.light,
+            ),
+          ),
+          scaffoldBackgroundColor: bgColor,
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: primaryColor,
+            primary: primaryColor,
+          ),
+          useMaterial3: false,
         ),
         debugShowCheckedModeBanner: false,
         onGenerateRoute: RouteNames.generateRoute,

@@ -19,14 +19,12 @@ class ReportPDF {
   String todate = "";
   TechnicianModel technicianModel = TechnicianModel();
   var airoTechStamp;
-  var airoTechStamp2; // Second instance for customer signature
+  var airoTechStamp2;
 
   getinitData() async {
     todate = CommonFunctions().returnAppDateFormat(DateTime.now());
     technicianModel = await CommonFunctions().getProfileData();
-    appLogo = await networkImage(
-        "https://airotech.webvisionsoftech.com/assets/images/logos/logo.png");
-    // Load stamp twice as separate instances to avoid PDF reuse issue
+    appLogo = await imageFromAssetBundle("assets/images/app_logo.png");
     airoTechStamp = await imageFromAssetBundle("assets/images/stup.png");
     airoTechStamp2 = await imageFromAssetBundle("assets/images/stup.png");
 
@@ -245,14 +243,24 @@ class ReportPDF {
           borderRadius: pw.BorderRadius.circular(0)),
       child: pw
           .Column(crossAxisAlignment: pw.CrossAxisAlignment.center, children: [
-        pw.Image(appLogo, width: 170),
-        pw.SizedBox(height: 5),
+        pw.Image(appLogo, width: 120, height: 80, fit: pw.BoxFit.contain),
+        pw.SizedBox(height: 4),
         pw.Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               pw.Text(
-                "All Types of Air Compressors Sales,Service & Spare Parts Available Elgi, Ingersoll Rand,Air Dryer Etc.",
+                "PAL-AIR — Leader in Ventilation Technology",
+                textAlign: TextAlign.center,
+                style: pw.TextStyle(
+                  fontSize: 11,
+                  font: boldFont,
+                  color: PdfColors.red,
+                ),
+              ),
+              pw.SizedBox(height: 3),
+              pw.Text(
+                "All Types of Air Compressors Sales, Service & Spare Parts Available — Elgi, Ingersoll Rand, Air Dryer Etc.",
                 textAlign: TextAlign.center,
                 style: pw.TextStyle(
                   fontSize: 8,
@@ -261,28 +269,10 @@ class ReportPDF {
                 ),
               ),
               pw.Text(
-                "Unit no-5, Vasai Taluka Industrial Estate, Next to Waliv Police Station, Goraipada Road, Vasai (E), Palghar - 401 208., Maharashtra.",
+                "Email: info@pal-air.com  |  Website: www.pal-air.com",
                 textAlign: TextAlign.center,
                 style: pw.TextStyle(
                   fontSize: 8,
-                  font: boldFont,
-                  color: PdfColors.black,
-                ),
-              ),
-              pw.Text(
-                "Email: info@compressorairotech.com/airotechenterprises@rediffmail.com",
-                textAlign: TextAlign.center,
-                style: pw.TextStyle(
-                  fontSize: 9,
-                  font: boldFont,
-                  color: PdfColors.black,
-                ),
-              ),
-              pw.Text(
-                "Website: www.aircompressors.net.in/www.compressorairotech.com",
-                textAlign: TextAlign.center,
-                style: pw.TextStyle(
-                  fontSize: 9,
                   font: boldFont,
                   color: PdfColors.black,
                 ),

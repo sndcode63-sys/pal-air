@@ -7,46 +7,52 @@ class DashBoardWidget extends StatelessWidget {
   final String title, iconString;
   final VoidCallback onPressed;
 
-  const DashBoardWidget(
-      {super.key,
-      required this.onPressed,
-      required this.title,
-      required this.iconString});
+  const DashBoardWidget({
+    super.key,
+    required this.onPressed,
+    required this.title,
+    required this.iconString,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-      elevation: 5,
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+      elevation: 4,
+      shadowColor: primaryColor.withOpacity(0.15),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18),
-          side: const BorderSide(color: primaryColor)),
-      color: primaryColor.withOpacity(0.8),
+        borderRadius: BorderRadius.circular(18),
+        side: BorderSide(color: primaryColor.withOpacity(0.12), width: 1),
+      ),
+      color: whiteColor,
       child: InkWell(
         borderRadius: BorderRadius.circular(18),
         onTap: onPressed,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: const EdgeInsets.all(12),
-              decoration: const BoxDecoration(
-                  color: whiteColor, shape: BoxShape.circle),
-              child: SvgPicture.asset(iconString,
-                  height: 30,
-                  width: 30,
-                  colorFilter:
-                      const ColorFilter.mode(primaryColor, BlendMode.srcIn)),
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: primaryColor,
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: SvgPicture.asset(
+                iconString,
+                height: 28,
+                width: 28,
+                colorFilter: const ColorFilter.mode(whiteColor, BlendMode.srcIn),
+              ),
             ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 12),
             Text(
               title,
               textAlign: TextAlign.center,
               style: GoogleFonts.poppins(
-                  color: whiteColor, fontWeight: FontWeight.bold, fontSize: 13),
+                color: secondaryColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 12.5,
+              ),
             ),
           ],
         ),

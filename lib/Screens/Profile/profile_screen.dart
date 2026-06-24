@@ -28,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
         statusBarColor: primaryColor,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
       ),
     );
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -42,8 +42,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void dispose() {
     SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: primaryColor,
+        statusBarIconBrightness: Brightness.light,
       ),
     );
     super.dispose();

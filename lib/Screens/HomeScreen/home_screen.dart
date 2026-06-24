@@ -14,7 +14,6 @@ import 'package:shimmer_animation/shimmer_animation.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -22,306 +21,273 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.white,
-        statusBarIconBrightness: Brightness.dark,
-      ),
-    );
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarBrightness: Brightness.dark,
-      ),
-    );
-
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: primaryColor,
+      statusBarIconBrightness: Brightness.light,
+    ));
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      var provider = Provider.of<ProfileScreenProvider>(context, listen: false);
-      provider.getProfileData(context);
+      Provider.of<ProfileScreenProvider>(context, listen: false)
+          .getProfileData(context);
     });
-
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
-    var provider = Provider.of<ProfileScreenProvider>(
-      context,
-    );
+    final size = MediaQuery.of(context).size;
+    final provider = Provider.of<ProfileScreenProvider>(context);
     return Scaffold(
-      backgroundColor: whiteColor,
+      backgroundColor: bgColor,
       body: SafeArea(
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-
-                  Images.logo,
-                  width: size.width * 0.42,
-                ),
-                provider.isLoading
-                    ? const SizedBox()
-                    : InkWell(
-                        onTap: () => Navigator.pushNamed(
-                            context, RouteNames.profileScreen),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(100),
-                          child: CachedNetworkImage(
-                            fit: BoxFit.fill,
-                            width: 40,
-                            height: 40,
-                            imageUrl: provider.technicianModel.image ?? "",
-                            progressIndicatorBuilder:
-                                (context, url, downloadProgress) => SizedBox(
-                              width: 25,
+        child: Column(
+          children: [
+            // Red header bar
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    Images.logo,
+                    width: size.width * 0.42,
+                  ),
+                  provider.isLoading
+                      ? const SizedBox()
+                      : InkWell(
+                    onTap: () => Navigator.pushNamed(
+                        context, RouteNames.profileScreen),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.fill,
+                        width: 40,
+                        height: 40,
+                        imageUrl: provider.technicianModel.image ?? "",
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => SizedBox(
+                          width: 25,
+                          height: 25,
+                          child: Shimmer(
+                            colorOpacity: 0,
+                            duration: const Duration(seconds: 3),
+                            interval: const Duration(seconds: 5),
+                            color: Colors.white,
+                            direction: const ShimmerDirection.fromLTRB(),
+                            child: Container(
                               height: 25,
-                              child: Shimmer(
-                                colorOpacity: 0,
-                                duration: const Duration(seconds: 3),
-                                interval: const Duration(seconds: 5),
-                                color: Colors.white,
-                                direction: const ShimmerDirection.fromLTRB(),
-                                child: Container(
-                                  height: 25,
-                                  width: 25,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(100),
-                                    color: Colors.grey[300],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            errorWidget: (context, url, error) => Container(
-                              padding: const EdgeInsets.all(5),
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle, color: primaryColor),
-                              child: const Icon(
-                                CupertinoIcons.person,
-                                color: whiteColor,
+                              width: 25,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(100),
+                                color: Colors.grey[300],
                               ),
                             ),
                           ),
                         ),
+                        errorWidget: (context, url, error) => Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle, color: primaryColor),
+                          child: const Icon(
+                            CupertinoIcons.person,
+                            color: whiteColor,
+                          ),
+                        ),
                       ),
-              ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                GridView.count(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10.0,
-                  mainAxisSpacing: 0.0,
+
+            // Dashboard
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    FadeIn(
-                      duration: const Duration(milliseconds: 800),
-                      child: DashBoardWidget(
-                        onPressed: () {
-                          selectComplainType(context);
-                          //    Navigator.pushNamed(context, RouteNames.newOrderScreen);
-                        },
-                        title: 'My Complains',
-                        iconString: Images.mytasks,
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20, 18, 20, 4),
+                      child: Text(
+                        "Dashboard",
+                        style: GoogleFonts.poppins(
+                          color: secondaryColor,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
-                    FadeIn(
-                      duration: const Duration(milliseconds: 800),
-                      child: DashBoardWidget(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, RouteNames.mainHistoryScreen);
-                        },
-                        title: 'History',
-                        iconString: Images.mytasks,
-                      ),
-                    ),
-                    FadeIn(
-                      duration: const Duration(milliseconds: 700),
-                      child: DashBoardWidget(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, RouteNames.installationScreen);
-                        },
-                        title: 'Installation',
-                        iconString: Images.installation,
-                      ),
-                    ),
-                    FadeIn(
-                      duration: const Duration(milliseconds: 700),
-                      child: DashBoardWidget(
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, RouteNames.machineDispatchScreen);
-                        },
-                        title: 'New Machine\n Dispatch',
-                        iconString: Images.newMachine,
-                      ),
+                    GridView.count(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 0,
+                      mainAxisSpacing: 0,
+                      children: [
+                        FadeIn(
+                          duration: const Duration(milliseconds: 800),
+                          child: DashBoardWidget(
+                            onPressed: () => selectComplainType(context),
+                            title: 'My Complains',
+                            iconString: Images.mytasks,
+                          ),
+                        ),
+                        FadeIn(
+                          duration: const Duration(milliseconds: 800),
+                          child: DashBoardWidget(
+                            onPressed: () => Navigator.pushNamed(context, RouteNames.mainHistoryScreen),
+                            title: 'History',
+                            iconString: Images.mytasks,
+                          ),
+                        ),
+                        FadeIn(
+                          duration: const Duration(milliseconds: 700),
+                          child: DashBoardWidget(
+                            onPressed: () => Navigator.pushNamed(context, RouteNames.installationScreen),
+                            title: 'Installation',
+                            iconString: Images.installation,
+                          ),
+                        ),
+                        FadeIn(
+                          duration: const Duration(milliseconds: 700),
+                          child: DashBoardWidget(
+                            onPressed: () => Navigator.pushNamed(context, RouteNames.machineDispatchScreen),
+                            title: 'New Machine\n Dispatch',
+                            iconString: Images.newMachine,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }
 
-  selectComplainType(
-    BuildContext context,
-  ) {
+  selectComplainType(BuildContext context) {
     return showModalBottomSheet(
-        context: context,
-        backgroundColor: primaryColor,
-        isScrollControlled: true,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(25.0),
+      context: context,
+      backgroundColor: whiteColor,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(20, 16, 20, 28),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 36, height: 4,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 14),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      color: primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(Icons.menu, color: primaryColor),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    'Complain / AMC',
+                    style: GoogleFonts.poppins(
+                      fontSize: 15, fontWeight: FontWeight.w700, color: secondaryColor,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              _sheetOption(
+                context: context,
+                icon: Icons.precision_manufacturing_outlined,
+                title: 'Other Company Machine',
+                subtitle: 'Log complaint for non-PAL-Air units',
+                onTap: () {
+                  Navigator.of(context)
+                    ..pop()
+                    ..pushNamed(RouteNames.otherCompanyMachineScreen);
+                },
+              ),
+              const SizedBox(height: 10),
+              _sheetOption(
+                context: context,
+                icon: Icons.air_rounded,
+                title: 'Manage PAL-Air Machine',
+                subtitle: 'AMC & complaints for PAL-Air units',
+                onTap: () {
+                  Navigator.of(context)
+                    ..pop()
+                    ..pushNamed(RouteNames.manageAeroTechMachineScreen);
+                },
+              ),
+            ],
           ),
+        );
+      },
+    );
+  }
+
+  Widget _sheetOption({
+    required BuildContext context,
+    required IconData icon,
+    required String title,
+    required String subtitle,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          border: Border.all(color: borderColor),
+          borderRadius: BorderRadius.circular(12),
+          color: bgColor,
         ),
-        builder: (context) {
-          return Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.menu,
-                        color: whiteColor,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Complain/AMC',
-                        style: GoogleFonts.poppins(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: whiteColor),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context)
-                      ..pop()
-                      ..pushNamed(RouteNames.otherCompanyMachineScreen);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.arrow_outward_rounded,
-                          color: whiteColor,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Other Company Machine',
-                          style: GoogleFonts.poppins(
-                              color: whiteColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_right_rounded,
-                          color: whiteColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                InkWell(
-                  onTap: () {
-                    Navigator.of(context)
-                      ..pop()
-                      ..pushNamed(RouteNames.manageAeroTechMachineScreen);
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.arrow_outward_rounded,
-                          color: whiteColor,
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'Manage AeroTech Machine',
-                          style: GoogleFonts.poppins(
-                              color: whiteColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        const Spacer(),
-                        const Icon(
-                          Icons.arrow_right_rounded,
-                          color: whiteColor,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                // ListTile(
-                //   horizontalTitleGap: 1,
-                //   minLeadingWidth: 0,
-                //   dense: true,
-                //   contentPadding:
-                //       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                //   onTap: () {},
-                //   title: Text(
-                //     'Manage AeroTech Machine',
-                //     style: GoogleFonts.poppins(
-                //         fontSize: 12, fontWeight: FontWeight.bold),
-                //   ),
-                // ),
-                // ListTile(
-                //   horizontalTitleGap: 1,
-                //   minLeadingWidth: 0,
-                //   dense: true,
-                //   contentPadding:
-                //       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                //   onTap: () {},
-                //   title: Text(
-                //     'Other Company Machine',
-                //     style: GoogleFonts.poppins(
-                //         fontSize: 12, fontWeight: FontWeight.bold),
-                //   ),
-                // ),
-                const SizedBox(
-                  height: 15,
-                ),
-              ],
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: primaryColor,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, color: whiteColor, size: 22),
             ),
-          );
-        });
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600, fontSize: 13, color: secondaryColor,
+                  )),
+                  Text(subtitle, style: GoogleFonts.poppins(
+                    fontSize: 10, color: Colors.grey[500],
+                  )),
+                ],
+              ),
+            ),
+            const Icon(Icons.arrow_forward_ios_rounded, size: 14, color: Colors.grey),
+          ],
+        ),
+      ),
+    );
   }
 }

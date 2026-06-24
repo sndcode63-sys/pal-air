@@ -23,7 +23,7 @@ class _PermissionScreenState extends State<PermissionScreen>
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarColor: whiteColor,
+        statusBarColor: primaryColor,
         statusBarIconBrightness: Brightness.light,
       ),
     );
@@ -41,7 +41,7 @@ class _PermissionScreenState extends State<PermissionScreen>
     WidgetsBinding.instance.removeObserver(this);
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarColor: whiteColor,
+        statusBarColor: primaryColor,
         statusBarIconBrightness: Brightness.light,
       ),
     );

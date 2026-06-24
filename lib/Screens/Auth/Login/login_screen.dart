@@ -12,10 +12,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({
-    super.key,
-  });
-
+  const LoginScreen({super.key});
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -23,33 +20,30 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey();
   DateTime now = DateTime.now();
+
   @override
   void initState() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarColor: primaryColor,
-        statusBarIconBrightness: Brightness.light,
-      ),
-    );
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: primaryColor,
+      statusBarIconBrightness: Brightness.light,
+    ));
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      var provider = Provider.of<LoginScreenProvider>(context, listen: false);
-      provider.initData();
+      Provider.of<LoginScreenProvider>(context, listen: false).initData();
     });
     super.initState();
   }
 
   @override
   void dispose() {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.light,
-      ),
-    );
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.light,
+    ));
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
@@ -57,162 +51,175 @@ class _LoginScreenState extends State<LoginScreen> {
         body: SafeArea(
           child: Form(
             key: _formKey,
-            child: Center(
-              child: SingleChildScrollView(
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 15,
-                  ),
-                  child: Consumer<LoginScreenProvider>(
-                      builder: (context, provider, child) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 15),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(Images.logo),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "꧁༺ ${DateFormat('dd-MM-yyyy').format(now)} ༻꧂",
-                            style: GoogleFonts.poppins(
-                                fontWeight: FontWeight.bold),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          LoginTextField(
-                            pref: const Icon(
-                              CupertinoIcons.mail,
-                              color: primaryColor,
-                            ),
-                            controllerValue: provider.ctlEmail,
-                            hintText: 'Email',
-                            inputType: TextInputType.emailAddress,
-                            validate: (val) {
-                              if (val!.isEmpty) {
-                                return "Cant be Empty.";
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                          provider.errorEmailText.isEmpty
-                              ? Container()
-                              : ErrorText(
-                                  error: provider.errorEmailText,
-                                  errorColor: Colors.red,
-                                ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          LoginTextField(
-                            pref: const Icon(
-                              CupertinoIcons.lock,
-                              color: primaryColor,
-                            ),
-                            obsText: provider.showHidePass,
-                            suf: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                InkWell(
-                                    onTap: () {
-                                      provider.changeShowhidePass(
-                                          provider.showHidePass);
-                                    },
-                                    child: Icon(
-                                      provider.showHidePass
-                                          ? Icons.visibility_off
-                                          : Icons.visibility,
-                                      color: primaryColor,
-                                    )),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                InkWell(
-                                    onTap: () {
-                                      provider.clearPass(provider.showHidePass);
-                                    },
-                                    child: const Padding(
-                                      padding: EdgeInsets.only(right: 10.0),
-                                      child: Icon(
-                                        CupertinoIcons.clear_circled,
-                                        color: primaryColor,
-                                      ),
-                                    )),
-                              ],
-                            ),
-                            controllerValue: provider.ctlPassword,
-                            hintText: 'Password',
-                            inputType: TextInputType.visiblePassword,
-                            validate: (val) {
-                              if (val!.isEmpty) {
-                                return "Cant be Empty.";
-                              } else {
-                                return null;
-                              }
-                            },
-                          ),
-                          provider.errorPasswordText.isEmpty
-                              ? Container()
-                              : ErrorText(
-                                  error: provider.errorPasswordText,
-                                  errorColor: Colors.red,
-                                ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    shape: const StadiumBorder(),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 50, vertical: 10),
-                                    backgroundColor: primaryColor),
-                                onPressed: provider.isLoading
-                                    ? null
-                                    : () async {
-                                        final isValid =
-                                            _formKey.currentState!.validate();
-
-                                        if (!isValid) {
-                                          return;
-                                        }
-                                        _formKey.currentState!.save();
-
-                                        provider.login(context);
-                                      },
-                                child: provider.isLoading
-                                    ? const CommonButtonLoader(
-                                        indicatorColor: primaryColor,
-                                      )
-                                    : Text(
-                                        "Sign In",
-                                        style: GoogleFonts.poppins(
-                                            color: whiteColor,
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                        ],
+            child: Column(
+              children: [
+                // Top brand section
+                SizedBox(
+                  height: size.height * 0.32,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 85,
+                        height: 85,
+                        decoration: BoxDecoration(
+                          color: whiteColor,
+                          shape: BoxShape.circle,
+                          boxShadow: [BoxShadow(
+                            color: Colors.black.withOpacity(0.2),
+                            blurRadius: 12,
+                          )],
+                        ),
+                        padding: const EdgeInsets.all(14),
+                        child: Image.asset(Images.appLogo),
                       ),
-                    );
-                  }),
+                      const SizedBox(height: 12),
+                      Text(
+                        "PAL-AIR",
+                        style: GoogleFonts.rajdhani(
+                          color: whiteColor,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 5,
+                        ),
+                      ),
+                      Text(
+                        "Leader in Ventilation Technology",
+                        style: GoogleFonts.poppins(
+                          color: whiteColor.withOpacity(0.75),
+                          fontSize: 10,
+                          letterSpacing: 0.8,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+                // White form card
+                Expanded(
+                  child: Container(
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      color: bgColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(28),
+                        topRight: Radius.circular(28),
+                      ),
+                    ),
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.fromLTRB(24, 28, 24, 24),
+                      child: Consumer<LoginScreenProvider>(
+                        builder: (context, provider, child) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Welcome Back",
+                                style: GoogleFonts.poppins(
+                                  color: secondaryColor,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              Text(
+                                DateFormat('EEEE, dd MMM yyyy').format(now),
+                                style: GoogleFonts.poppins(
+                                  color: Colors.grey[500],
+                                  fontSize: 11,
+                                ),
+                              ),
+                              const SizedBox(height: 24),
+                              Text("Email", style: _labelStyle()),
+                              const SizedBox(height: 6),
+                              LoginTextField(
+                                pref: const Icon(CupertinoIcons.mail, color: primaryColor, size: 20),
+                                controllerValue: provider.ctlEmail,
+                                hintText: 'Enter your email',
+                                inputType: TextInputType.emailAddress,
+                                validate: (val) => val!.isEmpty ? "Can't be Empty." : null,
+                              ),
+                              if (provider.errorEmailText.isNotEmpty)
+                                ErrorText(error: provider.errorEmailText, errorColor: primaryColor),
+                              const SizedBox(height: 16),
+                              Text("Password", style: _labelStyle()),
+                              const SizedBox(height: 6),
+                              LoginTextField(
+                                pref: const Icon(CupertinoIcons.lock, color: primaryColor, size: 20),
+                                obsText: provider.showHidePass,
+                                suf: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    InkWell(
+                                      onTap: () => provider.changeShowhidePass(provider.showHidePass),
+                                      child: Icon(
+                                        provider.showHidePass ? Icons.visibility_off : Icons.visibility,
+                                        color: primaryColor, size: 20,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 8),
+                                    InkWell(
+                                      onTap: () => provider.clearPass(provider.showHidePass),
+                                      child: const Padding(
+                                        padding: EdgeInsets.only(right: 10.0),
+                                        child: Icon(CupertinoIcons.clear_circled, color: primaryColor, size: 20),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                controllerValue: provider.ctlPassword,
+                                hintText: 'Enter your password',
+                                inputType: TextInputType.visiblePassword,
+                                validate: (val) => val!.isEmpty ? "Can't be Empty." : null,
+                              ),
+                              if (provider.errorPasswordText.isNotEmpty)
+                                ErrorText(error: provider.errorPasswordText, errorColor: primaryColor),
+                              const SizedBox(height: 28),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 50,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12)),
+                                    backgroundColor: primaryColor,
+                                    elevation: 3,
+                                  ),
+                                  onPressed: provider.isLoading
+                                      ? null
+                                      : () async {
+                                          if (!_formKey.currentState!.validate()) return;
+                                          _formKey.currentState!.save();
+                                          provider.login(context);
+                                        },
+                                  child: provider.isLoading
+                                      ? const CommonButtonLoader(indicatorColor: whiteColor)
+                                      : Text(
+                                          "Sign In",
+                                          style: GoogleFonts.poppins(
+                                            color: whiteColor,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
       ),
     );
   }
+
+  TextStyle _labelStyle() => GoogleFonts.poppins(
+        color: secondaryColor,
+        fontSize: 13,
+        fontWeight: FontWeight.w600,
+      );
 }
