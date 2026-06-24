@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Route createRoute(passedClass, double dx, double dy) {
+Route createRoute(Widget passedClass, double dx, double dy) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) {
       return passedClass;

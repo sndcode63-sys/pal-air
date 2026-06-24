@@ -23,13 +23,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.white,
         statusBarIconBrightness: Brightness.dark,
       ),
     );
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.dark,
       ),
     );
@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Image.asset(
                   Images.logo,
-                  width: size.width * 0.7,
+                  width: size.width * 0.42,
                 ),
                 provider.isLoading
                     ? const SizedBox()

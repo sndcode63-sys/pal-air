@@ -19,13 +19,16 @@ class ReportPDF {
   String todate = "";
   TechnicianModel technicianModel = TechnicianModel();
   var airoTechStamp;
+  var airoTechStamp2; // Second instance for customer signature
 
   getinitData() async {
     todate = CommonFunctions().returnAppDateFormat(DateTime.now());
     technicianModel = await CommonFunctions().getProfileData();
     appLogo = await networkImage(
         "https://airotech.webvisionsoftech.com/assets/images/logos/logo.png");
+    // Load stamp twice as separate instances to avoid PDF reuse issue
     airoTechStamp = await imageFromAssetBundle("assets/images/stup.png");
+    airoTechStamp2 = await imageFromAssetBundle("assets/images/stup.png");
 
     font = await PdfGoogleFonts.poppinsMedium();
     boldFont = await PdfGoogleFonts.poppinsBold();
@@ -77,7 +80,6 @@ class ReportPDF {
     await getinitData();
 
     MemoryImage techImage = pw.MemoryImage(techSignatureFile.readAsBytesSync());
-
     MemoryImage custImage = pw.MemoryImage(custSignatureFile.readAsBytesSync());
 
     pdf.addPage(pw.MultiPage(
@@ -142,7 +144,8 @@ class ReportPDF {
             mobileNo,
             custImage,
             technicianRemark,
-            airoTechStamp)
+            airoTechStamp,
+            airoTechStamp2)
       ],
     ));
     return PdfApi.saveDocument(
@@ -151,33 +154,37 @@ class ReportPDF {
     );
   }
 
+  /// Signature with stamp overlaid on top-right corner of signature
   static pw.Widget signatureWithStamp(
       pw.ImageProvider? signatureImage,
       pw.ImageProvider? stampImage,
       ) {
-    return pw.Container(
-      width: 260,
-      height: 100,
-      child: pw.Row(
-        mainAxisAlignment: pw.MainAxisAlignment.start,
-        crossAxisAlignment: pw.CrossAxisAlignment.end,
+    return pw.SizedBox(
+      width: 160,
+      height: 80,
+      child: pw.Stack(
         children: [
-          // Signature
+          // Signature underneath
           if (signatureImage != null)
-            pw.Image(
-              signatureImage,
-              width: 140,
-              height: 60,
+            pw.Positioned(
+              left: 0,
+              bottom: 0,
+              child: pw.Image(
+                signatureImage,
+                width: 120,
+                height: 60,
+              ),
             ),
-
-          pw.SizedBox(width: 6),
-
-          // AIRO.TECH Stamp (to the right, not overlapping)
+          // Stamp overlaid on top-right
           if (stampImage != null)
-            pw.Image(
-              stampImage,
-              width: 100,
-              height: 100,
+            pw.Positioned(
+              right: 0,
+              top: 0,
+              child: pw.Image(
+                stampImage,
+                width: 70,
+                height: 70,
+              ),
             ),
         ],
       ),
@@ -795,7 +802,8 @@ class ReportPDF {
       String mobileNo,
       custImage,
       technicianRemark,
-      airoTechStamp) {
+      airoTechStamp,
+      airoTechStamp2) {
     return pw.Container(
       decoration: pw.BoxDecoration(
           border: pw.Border.all(
@@ -875,6 +883,7 @@ class ReportPDF {
                       pw.Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            // Technician side
                             pw.Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -907,9 +916,11 @@ class ReportPDF {
                                       ),
                                     ),
                                     SizedBox(width: 10),
+                                    // Use first stamp instance for technician
                                     signatureWithStamp(techImage, airoTechStamp)
                                   ])
                                 ]),
+                            // Customer side
                             pw.Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -960,7 +971,8 @@ class ReportPDF {
                                       ),
                                     ),
                                     SizedBox(width: 10),
-                                    signatureWithStamp(custImage, airoTechStamp)
+                                    // Use second stamp instance for customer
+                                    signatureWithStamp(custImage, airoTechStamp2)
                                   ])
                                 ])
                           ])
