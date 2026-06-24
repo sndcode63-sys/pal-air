@@ -1,7 +1,8 @@
-import 'package:airo_tech/Utils/images.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../Utils/images.dart';
+import 'input_fields.dart';
 
 class SearchWidget extends StatelessWidget {
   final VoidCallback fromOnTap, toOnTap, onSearch;

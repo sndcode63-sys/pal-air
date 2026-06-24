@@ -1,15 +1,16 @@
 import 'dart:async';
 
-import 'package:airo_tech/Screens/MyComplains/Components/complaint_view.dart';
-import 'package:airo_tech/Screens/MyComplains/OtherCompany/other_company_machine_provider.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/common_loader.dart';
-import 'package:airo_tech/Widgets/no_data_found_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/route_names.dart';
+import '../../../Widgets/common_appbar.dart';
+import '../../../Widgets/common_loader.dart';
+import '../../../Widgets/no_data_found_widget.dart';
+import '../Components/complaint_view.dart';
+import 'other_company_machine_provider.dart';
 
 class OtherCompanyMachineScreen extends StatefulWidget {
   const OtherCompanyMachineScreen({super.key});

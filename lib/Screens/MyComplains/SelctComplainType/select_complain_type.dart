@@ -1,8 +1,10 @@
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/route_names.dart';
+import '../../../Widgets/common_appbar.dart';
 
 class SelectComplainType extends StatelessWidget {
   const SelectComplainType({super.key});

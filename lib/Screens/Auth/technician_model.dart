@@ -1,4 +1,5 @@
-import 'package:airo_tech/Utils/remote_urls.dart';
+
+import '../../Utils/remote_urls.dart';
 
 class TechnicianModel {
   final String? id;

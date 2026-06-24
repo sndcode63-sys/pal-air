@@ -1,5 +1,6 @@
-import 'package:airo_tech/Utils/appcolors.dart';
 import 'package:flutter/material.dart';
+
+import '../Utils/appcolors.dart';
 
 class AppButton extends StatelessWidget {
   final Widget btnTitle;

@@ -1,15 +1,17 @@
-import 'package:airo_tech/Screens/Auth/Login/login_screen_provider.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/images.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
-import 'package:airo_tech/Widgets/error_found_widgets.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/images.dart';
+import '../../../Widgets/common_button_loader.dart';
+import '../../../Widgets/error_found_widgets.dart';
+import '../../../Widgets/input_fields.dart';
+import 'login_screen_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

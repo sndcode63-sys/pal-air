@@ -3,22 +3,22 @@ import 'dart:io';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
-import 'package:airo_tech/Screens/MyComplains/Components/complaint_view.dart';
-import 'package:airo_tech/Screens/MyComplains/CreateReport/report_pdf.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
-import 'package:airo_tech/Widgets/custom_checkbox_list_item.dart';
-import 'package:airo_tech/Widgets/dropdown_widget.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:signature/signature.dart';
 
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/common_functions.dart';
+import '../../../Widgets/common_appbar.dart';
+import '../../../Widgets/common_button_loader.dart';
+import '../../../Widgets/custom_checkbox_list_item.dart';
+import '../../../Widgets/dropdown_widget.dart';
+import '../../../Widgets/input_fields.dart';
+import '../Components/complaint_view.dart';
+import '../CreateReport/report_pdf.dart';
+import '../complaint_model.dart';
 import 'complain_detail_provider.dart';
 
 class ComplainDetailScreen extends StatefulWidget {

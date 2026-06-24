@@ -1,8 +1,4 @@
-import 'package:airo_tech/Screens/Profile/profile_screen_provider.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/images.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/dashboard_widget.dart';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +7,12 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
+
+import '../../Utils/appcolors.dart';
+import '../../Utils/images.dart';
+import '../../Utils/route_names.dart';
+import '../../Widgets/dashboard_widget.dart';
+import '../Profile/profile_screen_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,11 +1,12 @@
 import 'dart:convert';
 
-import 'package:airo_tech/Screens/Auth/auth_repository.dart';
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_repository.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Widgets/machine_type_list.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../Utils/common_functions.dart';
+import '../../../../Widgets/machine_type_list.dart';
+import '../../../Auth/auth_repository.dart';
+import '../../../Auth/technician_model.dart';
+import '../../complaint_repository.dart';
 
 class AddMachineOtherProvider with ChangeNotifier {
   AuthRepository authRepository = AuthRepository();

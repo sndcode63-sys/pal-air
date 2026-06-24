@@ -1,9 +1,4 @@
 import 'dart:convert';
-
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Utils/images.dart';
-import 'package:airo_tech/Widgets/machine_type_list.dart';
-import 'package:airo_tech/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +10,11 @@ import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../Screens/Auth/technician_model.dart';
+import '../Widgets/machine_type_list.dart';
+import '../main.dart';
 import 'appcolors.dart';
+import 'images.dart';
 import 'local_shared_preferences.dart';
 import 'route_names.dart';
 import 'package:http/http.dart' as http;

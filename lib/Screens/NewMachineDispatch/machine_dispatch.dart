@@ -1,14 +1,14 @@
 import 'dart:async';
 
-import 'package:airo_tech/Screens/Installation/installation_dispatch_view.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/common_loader.dart';
-import 'package:airo_tech/Widgets/no_data_found_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../../Utils/appcolors.dart';
+import '../../Utils/route_names.dart';
+import '../../Widgets/common_appbar.dart';
+import '../../Widgets/common_loader.dart';
+import '../../Widgets/no_data_found_widget.dart';
+import '../Installation/installation_dispatch_view.dart';
 import 'machine_dispatch_provider.dart';
 
 class MachineDispatchScreen extends StatefulWidget {

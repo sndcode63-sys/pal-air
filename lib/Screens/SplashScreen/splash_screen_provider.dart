@@ -1,13 +1,13 @@
 import 'dart:io' show Platform;
-
-import 'package:airo_tech/Utils/local_shared_preferences.dart';
-import 'package:airo_tech/Utils/route_names.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../Utils/local_shared_preferences.dart';
+import '../../Utils/route_names.dart';
 
 class SplashScreenProvider with ChangeNotifier {
   Future<void> checkVersion(BuildContext context) async {

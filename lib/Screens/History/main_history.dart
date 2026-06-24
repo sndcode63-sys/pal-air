@@ -1,8 +1,10 @@
-import 'package:airo_tech/Screens/History/AerotechMachineHistory/aerotech_machine_history.dart';
-import 'package:airo_tech/Screens/History/OtherMachineHistory/other_machine_history.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../Utils/appcolors.dart';
+import '../../Widgets/common_appbar.dart';
+import 'AerotechMachineHistory/aerotech_machine_history.dart';
+import 'OtherMachineHistory/other_machine_history.dart';
 
 class MainHistoryScreen extends StatefulWidget {
   const MainHistoryScreen({super.key});

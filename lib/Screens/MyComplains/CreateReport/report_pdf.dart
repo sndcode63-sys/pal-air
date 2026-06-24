@@ -1,16 +1,15 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'dart:io';
-
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
 import 'package:printing/printing.dart';
 
+import '../../../Utils/common_functions.dart';
+import '../../Auth/technician_model.dart';
 import '../ComplainDetail/helper_models.dart';
+import '../complaint_model.dart';
 import 'pdf_api.dart';
 
 class ReportPDF {

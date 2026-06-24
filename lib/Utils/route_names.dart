@@ -1,26 +1,23 @@
 import 'dart:io';
-
-import 'package:airo_tech/Screens/Auth/Login/login_screen.dart';
-import 'package:airo_tech/Screens/History/main_history.dart';
-
-import 'package:airo_tech/Screens/HomeScreen/home_screen.dart';
-import 'package:airo_tech/Screens/Installation/installation.dart';
-import 'package:airo_tech/Screens/MyComplains/ComplainDetail/complain_detail.dart';
-import 'package:airo_tech/Screens/MyComplains/ComplainDetail/complaint_sales_detail.dart';
-import 'package:airo_tech/Screens/MyComplains/CreateReport/pdf_viewer.dart';
-import 'package:airo_tech/Screens/MyComplains/ManageAeroTech/AddMachine/add_amc_machine.dart';
-import 'package:airo_tech/Screens/MyComplains/ManageAeroTech/manage_aero_tech_machine.dart';
-import 'package:airo_tech/Screens/MyComplains/OtherCompany/AddMachine/add_machine_other.dart';
-import 'package:airo_tech/Screens/MyComplains/OtherCompany/other_company_machine.dart';
-import 'package:airo_tech/Screens/MyComplains/SelctComplainType/select_complain_type.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Screens/NewMachineDispatch/DispatchInspectionCheckList/dispatch_inp_list.dart';
-import 'package:airo_tech/Screens/Profile/profile_screen.dart';
-import 'package:airo_tech/Screens/SplashScreen/permission_screen.dart';
-import 'package:airo_tech/Screens/SplashScreen/splash_screen.dart';
 import 'package:flutter/material.dart';
-
+import '../Screens/Auth/Login/login_screen.dart';
+import '../Screens/History/main_history.dart';
+import '../Screens/HomeScreen/home_screen.dart';
+import '../Screens/Installation/installation.dart';
+import '../Screens/MyComplains/ComplainDetail/complain_detail.dart';
+import '../Screens/MyComplains/ComplainDetail/complaint_sales_detail.dart';
+import '../Screens/MyComplains/CreateReport/pdf_viewer.dart';
+import '../Screens/MyComplains/ManageAeroTech/AddMachine/add_amc_machine.dart';
+import '../Screens/MyComplains/ManageAeroTech/manage_aero_tech_machine.dart';
+import '../Screens/MyComplains/OtherCompany/AddMachine/add_machine_other.dart';
+import '../Screens/MyComplains/OtherCompany/other_company_machine.dart';
+import '../Screens/MyComplains/SelctComplainType/select_complain_type.dart';
+import '../Screens/MyComplains/complaint_model.dart';
+import '../Screens/NewMachineDispatch/DispatchInspectionCheckList/dispatch_inp_list.dart';
 import '../Screens/NewMachineDispatch/machine_dispatch.dart';
+import '../Screens/Profile/profile_screen.dart';
+import '../Screens/SplashScreen/permission_screen.dart';
+import '../Screens/SplashScreen/splash_screen.dart';
 import 'animated_route.dart';
 
 class RouteNames {

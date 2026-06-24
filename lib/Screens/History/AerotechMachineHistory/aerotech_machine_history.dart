@@ -1,10 +1,11 @@
-import 'package:airo_tech/Screens/MyComplains/Components/complaint_view.dart';
-import 'package:airo_tech/Widgets/common_loader.dart';
-import 'package:airo_tech/Widgets/search_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Widgets/common_loader.dart';
 import '../../../Widgets/no_data_found_widget.dart';
+import '../../../Widgets/search_widget.dart';
+import '../../MyComplains/Components/complaint_view.dart';
 import 'aerotech_history_provider.dart';
 
 class AerotechMachineHistory extends StatefulWidget {

@@ -1,6 +1,8 @@
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_repository.dart';
+
 import 'package:flutter/material.dart';
+
+import '../complaint_model.dart';
+import '../complaint_repository.dart';
 
 class ManageAeroTechMachineProvider with ChangeNotifier {
   ComplaintRepository complaintRepository = ComplaintRepository();

@@ -1,11 +1,11 @@
 import 'dart:convert';
-
-import 'package:airo_tech/Screens/Auth/auth_repository.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/local_shared_preferences.dart';
-import 'package:airo_tech/Utils/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../../../Utils/common_functions.dart';
+import '../../../Utils/local_shared_preferences.dart';
+import '../../../Utils/route_names.dart';
+import '../auth_repository.dart';
 
 class LoginScreenProvider with ChangeNotifier {
   AuthRepository authRepository = AuthRepository();

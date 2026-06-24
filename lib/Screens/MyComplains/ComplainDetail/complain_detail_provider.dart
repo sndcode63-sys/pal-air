@@ -1,17 +1,17 @@
 import 'dart:convert';
 import 'dart:developer' as dev;
-
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Screens/MyComplains/ComplainDetail/helper_models.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_repository.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/common_functions.dart';
+import '../../../Utils/route_names.dart';
+import '../../../Widgets/common_button_loader.dart';
+import '../../Auth/technician_model.dart';
+import '../complaint_model.dart';
+import '../complaint_repository.dart';
+import 'helper_models.dart';
 
 class ComplainDetailProvider with ChangeNotifier {
   ComplaintRepository complaintRepository = ComplaintRepository();
@@ -486,7 +486,7 @@ class ComplainDetailProvider with ChangeNotifier {
 
       result.fold((error) {
         dev.log(
-          'API Left (failure): ${error.message} code=${error.statusCode}',
+          'API Left (failure): ${error?.message} code=${error.statusCode}',
           name: 'SubmitReport',
         );
         CommonFunctions.showErrorSnackbar(error.message);

@@ -1,10 +1,10 @@
 import 'dart:convert';
-
-import 'package:airo_tech/Screens/Auth/auth_repository.dart';
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../../Utils/common_functions.dart';
+import '../Auth/auth_repository.dart';
+import '../Auth/technician_model.dart';
 
 class ProfileScreenProvider with ChangeNotifier {
   AuthRepository authRepository = AuthRepository();

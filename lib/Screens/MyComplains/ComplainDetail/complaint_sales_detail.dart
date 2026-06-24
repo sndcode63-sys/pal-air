@@ -3,14 +3,6 @@ import 'dart:io';
 import 'dart:ui';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
-
-import 'package:airo_tech/Screens/MyComplains/CreateReport/sales_report.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/upload_images_helper.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -18,7 +10,14 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:signature/signature.dart';
 
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/common_functions.dart';
+import '../../../Utils/upload_images_helper.dart';
+import '../../../Widgets/common_appbar.dart';
 import '../../../Widgets/common_button_loader.dart';
+import '../../../Widgets/input_fields.dart';
+import '../CreateReport/sales_report.dart';
+import '../complaint_model.dart';
 import 'complaint_sales_detail_provider.dart';
 
 class ComplaintSalesDetailScreen extends StatefulWidget {

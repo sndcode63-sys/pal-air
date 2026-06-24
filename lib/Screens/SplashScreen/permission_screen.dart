@@ -1,13 +1,14 @@
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/local_shared_preferences.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../Utils/appcolors.dart';
+import '../../Utils/local_shared_preferences.dart';
+import '../../Utils/route_names.dart';
+import '../../Widgets/common_button_loader.dart';
 import 'permission_provider.dart';
 
 class PermissionScreen extends StatefulWidget {

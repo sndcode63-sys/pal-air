@@ -1,15 +1,16 @@
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/upload_images_helper.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:provider/provider.dart';
 
+import '../../Utils/appcolors.dart';
+import '../../Utils/common_functions.dart';
+import '../../Utils/upload_images_helper.dart';
+import '../../Widgets/common_appbar.dart';
+import '../../Widgets/common_button_loader.dart';
+import '../../Widgets/input_fields.dart';
 import 'profile_screen_provider.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -26,7 +27,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: primaryColor,
         statusBarIconBrightness: Brightness.light,
       ),
@@ -41,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   void dispose() {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: primaryColor,
         statusBarIconBrightness: Brightness.light,
       ),

@@ -1,9 +1,9 @@
-import 'package:airo_tech/Utils/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/SplashScreen/splash_screen.dart';
+import 'Utils/appcolors.dart';
 import 'Utils/register_provider.dart';
 import 'Utils/route_names.dart';
 

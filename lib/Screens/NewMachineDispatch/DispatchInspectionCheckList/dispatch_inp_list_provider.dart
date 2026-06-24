@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Screens/NewMachineDispatch/machine_dispatch_repository.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
 import 'package:flutter/material.dart';
 
+import '../../../Utils/common_functions.dart';
+import '../../Auth/technician_model.dart';
+import '../machine_dispatch_repository.dart';
 import 'dispatch_insp_model.dart';
 
 class DispatchInpectionListProvider with ChangeNotifier {

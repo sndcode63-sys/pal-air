@@ -1,17 +1,17 @@
 import 'dart:convert';
 
-import 'package:airo_tech/Screens/Installation/installation_model.dart';
-import 'package:airo_tech/Screens/NewMachineDispatch/machine_dispatch_provider.dart';
-import 'package:airo_tech/Screens/NewMachineDispatch/machine_dispatch_repository.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../Utils/appcolors.dart';
+import '../../Utils/common_functions.dart';
+import '../../Widgets/input_fields.dart';
 import '../MyComplains/Components/complaint_view.dart';
+import '../NewMachineDispatch/machine_dispatch_provider.dart';
+import '../NewMachineDispatch/machine_dispatch_repository.dart';
+import 'installation_model.dart';
 import 'installation_provider.dart';
 import 'installation_repository.dart';
 

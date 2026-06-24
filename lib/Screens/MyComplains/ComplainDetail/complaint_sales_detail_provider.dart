@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:developer' as dev;
 
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_repository.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/route_names.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../../../Utils/common_functions.dart';
+import '../../../Utils/route_names.dart';
+import '../complaint_model.dart';
+import '../complaint_repository.dart';
 
 class ComplaintSalesDetailProvider with ChangeNotifier {
   ComplaintRepository complaintRepository = ComplaintRepository();

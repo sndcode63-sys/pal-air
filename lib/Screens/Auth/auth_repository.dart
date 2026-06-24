@@ -1,15 +1,16 @@
 import 'dart:convert';
 
-import 'package:airo_tech/Screens/Auth/technician_model.dart';
-import 'package:airo_tech/Utils/app_base_api_services.dart';
-import 'package:airo_tech/Utils/app_exceptions.dart';
-import 'package:airo_tech/Utils/app_failure.dart';
-import 'package:airo_tech/Utils/app_network_api_services.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/local_shared_preferences.dart';
-import 'package:airo_tech/Utils/remote_urls.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
+import 'package:pal_air/Screens/Auth/technician_model.dart';
+
+import '../../Utils/app_base_api_services.dart';
+import '../../Utils/app_exceptions.dart';
+import '../../Utils/app_failure.dart';
+import '../../Utils/app_network_api_services.dart';
+import '../../Utils/common_functions.dart';
+import '../../Utils/local_shared_preferences.dart';
+import '../../Utils/remote_urls.dart';
 
 class AuthRepository {
   BaseApiService apiService = NetworkAPIService();

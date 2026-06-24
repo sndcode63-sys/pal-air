@@ -1,11 +1,12 @@
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../Utils/appcolors.dart';
+import '../../../Widgets/common_appbar.dart';
+import '../../../Widgets/common_button_loader.dart';
+import '../../../Widgets/input_fields.dart';
 import 'dispatch_inp_list_provider.dart';
 
 class DispatchInspectionListScreen extends StatefulWidget {

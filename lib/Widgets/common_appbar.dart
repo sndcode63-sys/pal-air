@@ -1,7 +1,8 @@
-import 'package:airo_tech/Utils/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Utils/appcolors.dart';
 
 AppBar commonAppBar({
   required BuildContext context,

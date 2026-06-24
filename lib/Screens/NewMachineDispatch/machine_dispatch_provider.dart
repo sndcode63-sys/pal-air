@@ -1,6 +1,6 @@
-import 'package:airo_tech/Screens/Installation/installation_model.dart';
 import 'package:flutter/material.dart';
 
+import '../Installation/installation_model.dart';
 import 'machine_dispatch_repository.dart';
 
 class MachineDispatchProvider with ChangeNotifier {

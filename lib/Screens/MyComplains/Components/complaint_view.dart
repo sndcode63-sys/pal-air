@@ -1,18 +1,18 @@
 import 'dart:async';
 import 'dart:convert';
-
-import 'package:airo_tech/Screens/MyComplains/ManageAeroTech/manage_aero_tech_machine_provider.dart';
-import 'package:airo_tech/Screens/MyComplains/OtherCompany/other_company_machine_provider.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_repository.dart';
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_button_loader.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import '../../../Utils/appcolors.dart';
+import '../../../Utils/common_functions.dart';
+import '../../../Utils/route_names.dart';
+import '../../../Widgets/common_button_loader.dart';
+import '../ManageAeroTech/manage_aero_tech_machine_provider.dart';
+import '../OtherCompany/other_company_machine_provider.dart';
+import '../complaint_model.dart';
+import '../complaint_repository.dart';
 
 class ComplaintView extends StatefulWidget {
   final String from;

@@ -1,6 +1,7 @@
-import 'package:airo_tech/Utils/appcolors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../Utils/appcolors.dart';
 
 class ExpandedDropDownWidget extends StatefulWidget {
   final List? dropMenuList;
@@ -9,12 +10,12 @@ class ExpandedDropDownWidget extends StatefulWidget {
   final String? hintText;
 
   const ExpandedDropDownWidget({
-    Key? key,
+    super.key,
     required this.dropMenuList,
     required this.labelText,
     this.hintText = "",
     required this.selectedReturnValue,
-  }) : super(key: key);
+  });
 
   @override
   State<ExpandedDropDownWidget> createState() => _ExpandedDropDownWidgetState();

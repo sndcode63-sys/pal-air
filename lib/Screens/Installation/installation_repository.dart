@@ -1,10 +1,11 @@
-import 'package:airo_tech/Utils/app_base_api_services.dart';
-import 'package:airo_tech/Utils/app_exceptions.dart';
-import 'package:airo_tech/Utils/app_failure.dart';
-import 'package:airo_tech/Utils/app_network_api_services.dart';
-import 'package:airo_tech/Utils/remote_urls.dart';
+
 import 'package:dartz/dartz.dart';
 
+import '../../Utils/app_base_api_services.dart';
+import '../../Utils/app_exceptions.dart';
+import '../../Utils/app_failure.dart';
+import '../../Utils/app_network_api_services.dart';
+import '../../Utils/remote_urls.dart';
 import 'installation_model.dart';
 
 class InstallationRepository {

@@ -1,8 +1,10 @@
-import 'package:airo_tech/Screens/MyComplains/complaint_model.dart';
-import 'package:airo_tech/Screens/MyComplains/complaint_repository.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import '../../../Utils/common_functions.dart';
+import '../../MyComplains/complaint_model.dart';
+import '../../MyComplains/complaint_repository.dart';
 
 class AerotechHistoryProvider with ChangeNotifier {
   ComplaintRepository complaintRepository = ComplaintRepository();

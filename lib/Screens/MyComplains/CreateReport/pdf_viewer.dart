@@ -1,9 +1,11 @@
-import 'package:airo_tech/Utils/route_names.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:share_plus/share_plus.dart';
 import 'dart:io';
+
+import '../../../Utils/route_names.dart';
+import '../../../Widgets/common_appbar.dart';
 
 class PFDViewerPage extends StatefulWidget {
   final File? file;

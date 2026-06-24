@@ -1,5 +1,6 @@
-import 'package:airo_tech/Utils/images.dart';
 import 'package:flutter/material.dart';
+
+import '../Utils/images.dart';
 
 class NoDataFoundWidget extends StatelessWidget {
   const NoDataFoundWidget({super.key});

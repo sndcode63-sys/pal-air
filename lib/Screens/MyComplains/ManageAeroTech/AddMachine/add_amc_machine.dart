@@ -1,16 +1,17 @@
-import 'package:airo_tech/Utils/appcolors.dart';
-import 'package:airo_tech/Utils/common_functions.dart';
-import 'package:airo_tech/Widgets/app_button.dart';
-import 'package:airo_tech/Widgets/common_appbar.dart';
-import 'package:airo_tech/Widgets/dropdown_widget.dart';
-import 'package:airo_tech/Widgets/error_found_widgets.dart';
-import 'package:airo_tech/Widgets/input_fields.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../Utils/appcolors.dart';
+import '../../../../Utils/common_functions.dart';
+import '../../../../Widgets/app_button.dart';
+import '../../../../Widgets/common_appbar.dart';
 import '../../../../Widgets/common_button_loader.dart';
+import '../../../../Widgets/dropdown_widget.dart';
+import '../../../../Widgets/error_found_widgets.dart';
+import '../../../../Widgets/input_fields.dart';
 import 'add_amc_machine_provider.dart';
 
 class AddAmcMachineScreen extends StatefulWidget {
